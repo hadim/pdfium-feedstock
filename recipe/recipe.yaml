@@ -1,0 +1,45 @@
+context:
+  name: pdfium
+  version: 2024.11.11.01
+  git_rev: 84a8011ec69d0e2de271c05be7d62979608040d9
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  git: https://pdfium.googlesource.com/pdfium.git
+  # Use `git ls-remote https://pdfium.googlesource.com/pdfium HEAD` to get the latest commit hash.
+  # 2024.11.11.01 -> 84a8011ec69d0e2de271c05be7d62979608040d9
+  rev: ${{ git_rev }}
+
+build:
+  number: 0
+  skip: win
+  script:
+    file: build.sh
+    env:
+      PDFIUM_GIT_REVISION: ${{ git_rev }}
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib("c") }}
+    - ninja
+    - cmake
+    - pkg-config
+    - gn
+    - sed
+
+tests:
+  - script: echo "Hello World"
+
+about:
+  summary: A PDF library
+  license: Apache-2.0
+  license_file: LICENSE
+  homepage: https://pdfium.googlesource.com/pdfium/
+
+extra:
+  recipe-maintainers:
+    - hadim

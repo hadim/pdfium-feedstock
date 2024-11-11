@@ -3,6 +3,7 @@ set -ex
 
 # IMPORTANT: All the build steps have been adapted from
 # https://github.com/bblanchon/pdfium-binaries/blob/91942b7e694e75c2a74f610c922e85521a0a3a5c/steps
+# and https://github.com/conda-forge/libv8-feedstock/blob/2ad246cbd0089edece27145460850b44d76b8114/recipe/build.sh
 
 ########################################
 ## Cleaning up
